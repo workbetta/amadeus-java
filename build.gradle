@@ -71,8 +71,8 @@ test.finalizedBy jacocoTestReport
 test {
     useJUnitPlatform()
     reports {
-        junitXml.enabled = false
-        html.enabled = true
+        junitXml.required.set(false)
+        html.required.set(true)
     }
 }
 
