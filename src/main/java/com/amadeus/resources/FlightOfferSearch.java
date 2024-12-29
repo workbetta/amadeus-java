@@ -167,6 +167,7 @@ public class FlightOfferSearch extends Resource {
     private @Getter String cabin;
     private @Getter String fareBasis;
     private @Getter String brandedFare;
+    private @Getter String brandedFareLabel;
     @SerializedName("class")
     private @Getter String segmentClass;
     private @Getter boolean isAllotment;
