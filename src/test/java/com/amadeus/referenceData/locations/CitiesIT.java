@@ -1,10 +1,13 @@
 package com.amadeus.referencedata.locations;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import com.amadeus.Amadeus;
@@ -72,6 +75,27 @@ public class CitiesIT {
 
     // Then
     assertNotEquals(0, result.length);
+  }
+
+  @Test
+  public void givenClientWhenCallCitySearchWithParamsThenEmpty() throws ResponseException {
+
+    // Given
+    String address = "/v1/reference-data/locations/cities";
+    wireMockServer.stubFor(get(urlPathEqualTo(address))
+        .withQueryParam("keyword", equalTo("SANC"))
+        .withQueryParam("countryCode", equalTo("AZ"))
+        .willReturn(aResponse().withHeader("Content-Type", "application/json")
+        .withStatus(200)
+        .withBodyFile("city_search_response_empty.json")));
+
+    Params params = Params.with("keyword", "SANC").and("countryCode", "AZ");
+
+    // When
+    City[] result = amadeus.referenceData.locations.cities.get(params);
+
+    // Then
+    assertEquals(0, result.length);
   }
 
   @Test

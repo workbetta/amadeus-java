@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "code": 1797,
+      "title": "DATA NOT FOUND",
+      "detail": "No Cities available",
+      "source": {
+        "parameter": "keyword"
+      },
+      "status": 200
+    }
+  ],
+  "meta": {
+    "count": 0,
+    "links": {
+      "self": "https://test.api.amadeus.com/v1/reference-data/locations/cities?countryCode=AZ&keyword=SANC&max=1000"
+    }
+  }
+}
