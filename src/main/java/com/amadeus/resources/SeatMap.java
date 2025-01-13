@@ -48,8 +48,76 @@ public class SeatMap extends Resource {
   public class Deck {
     private @Getter String deckType;
     private @Getter DeckConfiguration deckConfiguration;
+    private @Getter Facility[] facilities;
+    private @Getter Seat[] seats;
 
     protected Deck() {}
+  }
+
+  @ToString
+  public class Facility {
+    private @Getter String code;
+    private @Getter String column;
+    private @Getter String row;
+    private @Getter String position;
+    private @Getter Coordinates coordinates;
+
+    protected Facility() {}
+  }
+
+  @ToString
+  public class Coordinates {
+    private @Getter int coordX;
+    private @Getter int coordY;
+
+    protected Coordinates() {}
+  }
+
+  @ToString
+  public class Seat {
+    private @Getter String cabin;
+    private @Getter String number;
+    private @Getter String[] characteristicsCodes;
+    private @Getter SeatmapTravelerPricing[] travelerPricings;
+    private @Getter Coordinates coordinates;
+
+    protected Seat() {}
+  }
+
+  @ToString
+  public class SeatmapTravelerPricing {
+    private @Getter String travelerId;
+    private @Getter String seatAvailabilityStatus;
+    private @Getter Price price;
+
+    protected SeatmapTravelerPricing() {}
+  }
+
+  @ToString
+  public class Price {
+    private @Getter String currency;
+    private @Getter String total;
+    private @Getter String base;
+    private @Getter Fee[] fees;
+    private @Getter Tax[] taxes;
+
+    protected Price() {}
+  }
+
+  @ToString
+  public class Fee {
+    private @Getter String amount;
+    private @Getter String type;
+
+    protected Fee() {}
+  }
+
+  @ToString
+  public class Tax {
+    private @Getter String amount;
+    private @Getter String code;
+
+    protected Tax() {}
   }
 
   @ToString
